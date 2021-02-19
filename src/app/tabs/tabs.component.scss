@@ -1,0 +1,24 @@
+.mat-tab-nav-bar {
+  border-bottom: none;
+
+  .mat-tab-link-container {
+    .mat-tab-links::after {
+      content: "";
+      width: 100%;
+      border-bottom: 2px solid rgba(0,0,0,.12);
+    }
+
+    .mat-tab-link {
+      border-bottom: 2px solid rgba(0,0,0,.12);
+
+      &.mat-tab-label-active {
+        border: 2px solid rgba(0,0,0,.12);
+        border-bottom: none;
+      }
+    }
+
+    .mat-ink-bar {
+      display: none;
+    }
+  }
+}
