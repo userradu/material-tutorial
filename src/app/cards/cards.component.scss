@@ -1,0 +1,28 @@
+.wrapper {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 50px;
+}
+
+.mat-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.spinner-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 587px;
+}
+
+.progress-card {
+  display: flex;
+  align-items: center;
+  height: 587px;
+}

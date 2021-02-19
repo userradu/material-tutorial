@@ -1,3 +1,43 @@
-<a routerLink="/tabs">Tabs</a>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button
+      mat-button>
+      Link 1
+    </button>
 
-<router-outlet></router-outlet>
+    <button
+      mat-button>
+      Link 2
+    </button>
+
+    <button
+      mat-button>
+      Link 3
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-sidenav-container >
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let link of links">
+         <a matLine>{{ link }}</a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-tab-group>
+      <mat-tab label="Table">
+        <app-table></app-table>
+      </mat-tab>
+      <mat-tab label="Form">
+        <app-form></app-form>
+      </mat-tab>
+      <mat-tab label="Cards">
+        <app-cards></app-cards>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-sidenav-content>
+</mat-sidenav-container>
