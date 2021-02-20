@@ -14,6 +14,12 @@
       mat-button>
       Link 3
     </button>
+
+    <mat-slide-toggle
+      [checked]="darkThemeEnabled"
+      (change)="switchTheme($event.checked)">
+      Dark Theme
+    </mat-slide-toggle>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -37,6 +43,9 @@
       </mat-tab>
       <mat-tab label="Cards">
         <app-cards></app-cards>
+      </mat-tab>
+      <mat-tab label="Text">
+        <app-text></app-text>
       </mat-tab>
     </mat-tab-group>
   </mat-sidenav-content>
