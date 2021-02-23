@@ -29,6 +29,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TextComponent } from './text/text.component';
 import { CustomComponent } from './custom/custom.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { ExampleDialogComponent } from './dialog/example-dialog/example-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { CustomComponent } from './custom/custom.component';
     FormComponent,
     CardsComponent,
     TextComponent,
-    CustomComponent
+    CustomComponent,
+    DialogComponent,
+    ExampleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,8 @@ import { CustomComponent } from './custom/custom.component';
     MatCheckboxModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

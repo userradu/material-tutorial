@@ -1,3 +1,4 @@
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { DOCUMENT } from '@angular/common';
 import { Inject, Renderer2 } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,11 @@ export class AppComponent implements OnInit {
 
   darkThemeEnabled = false;
 
-  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2,
+    private overlayContainer: OverlayContainer
+  ) {
 
   }
 
@@ -29,9 +34,15 @@ export class AppComponent implements OnInit {
     if (this.darkThemeEnabled) {
       this.renderer.removeClass(document.body, 'light-theme');
       this.renderer.addClass(document.body, 'dark-theme');
+
+      // this.overlayContainer.getContainerElement().classList.remove('light-theme');
+      // this.overlayContainer.getContainerElement().classList.add('dark-theme');
     } else {
       this.renderer.removeClass(document.body, 'dark-theme');
       this.renderer.addClass(document.body, 'light-theme');
+
+      // this.overlayContainer.getContainerElement().classList.remove('dark-theme');
+      // this.overlayContainer.getContainerElement().classList.add('light-theme');
     }
   }
 }
