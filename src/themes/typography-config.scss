@@ -1,0 +1,5 @@
+$custom-typography: mat-typography-config(
+  $font-family: 'Montserrat',
+);
+
+@include angular-material-typography($custom-typography);

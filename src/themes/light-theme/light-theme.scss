@@ -1,4 +1,4 @@
-@import './color-palettes';
+@import './color-palettes.scss';
 
 $light-primary: mat-palette($light-theme-primary-color-palette);
 $light-accent: mat-palette($light-theme-secondary-color-palette);
