@@ -3,19 +3,25 @@
 @include mat-core();
 
 @import './themes/light-theme/light-theme.scss';
-
 @import './themes/dark-theme/dark-theme.scss';
+@import './app/custom/custom.component.theme.scss';
+
+@mixin custom-components-theme($theme) {
+  @include custom-component-theme($theme);
+}
 
 .light-theme {
-  @include angular-material-theme($light-theme);
+  @include angular-material-color($light-theme);
+  @include custom-components-theme($light-theme);
 }
 
 .dark-theme {
   @include angular-material-color($dark-theme);
+  @include custom-components-theme($dark-theme);
 }
 
 $custom-typography: mat-typography-config(
-  $font-family: 'Caveat',
+  $font-family: 'Montserrat',
 );
 
 @include angular-material-typography($custom-typography);

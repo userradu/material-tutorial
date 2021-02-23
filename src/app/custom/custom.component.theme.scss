@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+
+@mixin custom-component-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .custom-component {
+
+    .header {
+      background: mat-color($primary);
+      color: mat-color($foreground, text);
+    }
+
+    .body {
+      color: mat-color($foreground, text);
+      background-color: mat-color($background, card);
+    }
+  }
+}
