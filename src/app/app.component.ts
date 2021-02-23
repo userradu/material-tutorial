@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.switchTheme(false);
+
     for(let i = 1; i <= 100; i++) {
       this.links.push('Link ' + i);
     }
@@ -25,9 +27,11 @@ export class AppComponent implements OnInit {
   switchTheme(enableDarkTheme: boolean) {
     this.darkThemeEnabled = enableDarkTheme;
     if (this.darkThemeEnabled) {
+      this.renderer.removeClass(document.body, 'light-theme');
       this.renderer.addClass(document.body, 'dark-theme');
     } else {
       this.renderer.removeClass(document.body, 'dark-theme');
+      this.renderer.addClass(document.body, 'light-theme');
     }
   }
 }

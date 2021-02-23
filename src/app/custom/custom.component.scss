@@ -1,0 +1,33 @@
+.wrapper {
+  padding: 15px;
+}
+
+.component-wrapper {
+  border: 1px solid black;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 10px;
+  background: blue;
+  color: #fff;
+}
+
+.body {
+  flex: 1;
+  padding: 10px;
+}
+
+.action-buttons {
+  background: lightgray;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin-right: 10px;
+  }
+}

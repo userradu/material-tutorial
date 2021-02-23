@@ -28,6 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TextComponent } from './text/text.component';
+import { CustomComponent } from './custom/custom.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TextComponent } from './text/text.component';
     TableComponent,
     FormComponent,
     CardsComponent,
-    TextComponent
+    TextComponent,
+    CustomComponent
   ],
   imports: [
     BrowserModule,
