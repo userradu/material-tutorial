@@ -32,6 +32,7 @@ import { CustomComponent } from './custom/custom.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { ExampleDialogComponent } from './dialog/example-dialog/example-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { IconsComponent } from './icons/icons.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     TextComponent,
     CustomComponent,
     DialogComponent,
-    ExampleDialogComponent
+    ExampleDialogComponent,
+    IconsComponent
   ],
   imports: [
     BrowserModule,
