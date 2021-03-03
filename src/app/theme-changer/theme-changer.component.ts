@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ColorConfig, ThemingService } from '../theming.service';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ThemingService } from '../theming.service';
 
 @Component({
   selector: 'app-theme-changer',
@@ -8,16 +9,39 @@ import { ColorConfig, ThemingService } from '../theming.service';
 })
 export class ThemeChangerComponent implements OnInit {
 
-  color = "#fff";
-  theme!: ColorConfig[];
+  primaryColor = "#fff";
+  secondaryColor = "#fff";
+  warnColor = "#fff";
 
-  constructor(private themingService: ThemingService) { }
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private themingService: ThemingService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  setColor(color: string, colorType: 'primary' | 'secondary' | 'warn') {
+    const prefix = {
+      primary: '--theme-primary-color',
+      secondary: '--theme-accent-color',
+      warn: '--theme-warn-color'
+    };
+
+    const colorPalette = this.themingService.generateColorPalette(color);
+
+    for (const colorConfig of colorPalette) {
+      const {colorVariant, colorHexValue, shouldHaveDarkContrast} = colorConfig;
+
+      const colorVariableName = `${prefix[colorType]}-${colorVariant}`;
+      this.setColorVariable(colorVariableName, colorHexValue);
+
+      const contrastedColorVariableName = `${prefix[colorType]}-contrast-${colorVariant}`;
+      const contrastedColorValue = shouldHaveDarkContrast ? '#000' : '#fff';
+      this.setColorVariable(contrastedColorVariableName, contrastedColorValue);
+    }
   }
 
-  onColorChanged(color: string) {
-    this.theme = this.themingService.generateColorPalette(color);
+  setColorVariable(variable: string, color: string) {
+    this.document.documentElement.style.setProperty(variable, color);
   }
-
 }

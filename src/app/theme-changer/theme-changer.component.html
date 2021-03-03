@@ -1,20 +1,33 @@
 <div class="wrapper">
-  <input
-    [(colorPicker)]="color"
-    [style.background]="color"
-    [cpOKButton]="true"
-    [cpCancelButton]="true"
-    (colorPickerSelect)="onColorChanged(color)"/>
+  <div class="colors">
+    <div>
+      <h3>Primary Color</h3>
+      <input
+        [(colorPicker)]="primaryColor"
+        [style.background]="primaryColor"
+        [cpOKButton]="true"
+        [cpCancelButton]="true"
+        (colorPickerSelect)="setColor($event, 'primary')"/>
+    </div>
 
-  <div class="theme-wrapper">
-    <h3>Theme</h3>
-    <div
-      *ngFor="let config of theme"
-      class="theme-color"
-      [style.background-color]="config.colorHexValue">
-      <span [style.color]="config.shouldHaveDarkContrast ? '#000' : '#fff'">
-        {{config.colorVariant}} {{config.colorHexValue | uppercase}}
-      </span>
+    <div>
+      <h3>Secondary Color</h3>
+      <input
+        [(colorPicker)]="secondaryColor"
+        [style.background]="secondaryColor"
+        [cpOKButton]="true"
+        [cpCancelButton]="true"
+        (colorPickerSelect)="setColor($event, 'secondary')"/>
+    </div>
+
+    <div>
+      <h3>Warn Color</h3>
+      <input
+        [(colorPicker)]="warnColor"
+        [style.background]="warnColor"
+        [cpOKButton]="true"
+        [cpCancelButton]="true"
+        (colorPickerSelect)="setColor($event, 'warn')"/>
     </div>
   </div>
 </div>
