@@ -2,6 +2,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { DOCUMENT } from '@angular/common';
 import { Inject, Renderer2 } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { ThemingService } from './theming.service';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +17,15 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
-    private overlayContainer: OverlayContainer
+    private overlayContainer: OverlayContainer,
+    private themingService: ThemingService
   ) {
 
   }
 
   ngOnInit() {
+    this.themingService.setDefaultTheme();
+
     this.switchTheme(false);
 
     for(let i = 1; i <= 100; i++) {

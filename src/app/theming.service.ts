@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 import * as tinycolor from 'tinycolor2';
 
 export interface ColorConfig {
@@ -11,6 +12,12 @@ export interface ColorConfig {
   providedIn: 'root'
 })
 export class ThemingService {
+
+  defaultPrimary = '#a500ff';
+  defaultSecondary = '#00ff32';
+  defaultWarn = '#ff0000';
+
+  constructor(@Inject(DOCUMENT) private document: Document) {}
 
   generateColorPalette(hexColor: string): ColorConfig[] {
     const baseLight = tinycolor('#ffffff');
@@ -52,4 +59,34 @@ export class ThemingService {
     };
   }
 
+  setDefaultTheme() {
+    this.setColor(this.defaultPrimary, 'primary');
+    this.setColor(this.defaultSecondary, 'secondary');
+    this.setColor(this.defaultWarn, 'warn');
+  }
+
+  setColor(color: string, colorType: 'primary' | 'secondary' | 'warn') {
+    const prefix = {
+      primary: '--theme-primary-color',
+      secondary: '--theme-accent-color',
+      warn: '--theme-warn-color'
+    };
+
+    const colorPalette = this.generateColorPalette(color);
+
+    for (const colorConfig of colorPalette) {
+      const {colorVariant, colorHexValue, shouldHaveDarkContrast} = colorConfig;
+
+      const colorVariableName = `${prefix[colorType]}-${colorVariant}`;
+      this.setColorVariable(colorVariableName, colorHexValue);
+
+      const contrastedColorVariableName = `${prefix[colorType]}-contrast-${colorVariant}`;
+      const contrastedColorValue = shouldHaveDarkContrast ? '#000' : '#fff';
+      this.setColorVariable(contrastedColorVariableName, contrastedColorValue);
+    }
+  }
+
+  private setColorVariable(variable: string, color: string) {
+    this.document.documentElement.style.setProperty(variable, color);
+  }
 }
