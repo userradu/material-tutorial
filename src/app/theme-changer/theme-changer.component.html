@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <input
+    [(colorPicker)]="color"
+    [style.background]="color"
+    [cpOKButton]="true"
+    [cpCancelButton]="true"
+    (colorPickerSelect)="onColorChanged(color)"/>
+
+  <div class="theme-wrapper">
+    <h3>Theme</h3>
+    <div
+      *ngFor="let config of theme"
+      class="theme-color"
+      [style.background-color]="config.colorHexValue">
+      <span [style.color]="config.shouldHaveDarkContrast ? '#000' : '#fff'">
+        {{config.colorVariant}} {{config.colorHexValue | uppercase}}
+      </span>
+    </div>
+  </div>
+</div>

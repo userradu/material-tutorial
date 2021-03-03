@@ -33,6 +33,8 @@ import { DialogComponent } from './dialog/dialog.component';
 import { ExampleDialogComponent } from './dialog/example-dialog/example-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { IconsComponent } from './icons/icons.component';
+import { ThemeChangerComponent } from './theme-changer/theme-changer.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { IconsComponent } from './icons/icons.component';
     CustomComponent,
     DialogComponent,
     ExampleDialogComponent,
-    IconsComponent
+    IconsComponent,
+    ThemeChangerComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { IconsComponent } from './icons/icons.component';
     MatCardModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    MatDialogModule
+    MatDialogModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
