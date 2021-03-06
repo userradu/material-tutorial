@@ -1,5 +1,7 @@
 @import '../app/custom/custom.component.theme.scss';
+@import '../app/chart/chart.component.theme.scss';
 
 @mixin custom-components-theme($theme) {
   @include custom-component-theme($theme);
+  @include chart-component-theme($theme);
 }

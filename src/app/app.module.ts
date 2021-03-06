@@ -37,6 +37,8 @@ import { IconsComponent } from './icons/icons.component';
 import { ThemeChangerComponent } from './theme-changer/theme-changer.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
+import { ChartsModule } from 'ng2-charts';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { ThemePickerComponent } from './theme-picker/theme-picker.component';
     ExampleDialogComponent,
     IconsComponent,
     ThemeChangerComponent,
-    ThemePickerComponent
+    ThemePickerComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +83,8 @@ import { ThemePickerComponent } from './theme-picker/theme-picker.component';
     MatProgressBarModule,
     MatDialogModule,
     ColorPickerModule,
-    MatMenuModule
+    MatMenuModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

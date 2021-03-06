@@ -1,0 +1,23 @@
+.wrapper {
+  padding: 15px;
+}
+
+.chart {
+  border: 1px solid black;
+  width: 600px;
+
+  .title {
+    padding: 15px;
+    border-bottom: 1px solid black;
+  }
+
+  .body {
+    position: relative;
+    width: 100%;
+    height: 400px;
+  }
+
+  .last-update {
+    padding: 5px;
+  }
+}

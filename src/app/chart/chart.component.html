@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="chart">
+    <div class="title">
+      <span>Random Chart</span>
+    </div>
+
+    <div class="body">
+      <canvas
+        baseChart width="400" height="400"
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType">
+      </canvas>
+    </div>
+    <div class="last-update">Last update: 1 min ago</div>
+  </div>
+</div>

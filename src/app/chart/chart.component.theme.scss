@@ -1,14 +1,14 @@
 @import '~@angular/material/theming';
 
-@mixin custom-component-theme($theme) {
+@mixin chart-component-theme($theme) {
 
   $primary: map-get($theme, primary);
   $background: map-get($theme, background);
   $is-dark-theme: map-get($theme, is-dark);
 
-  .custom-component {
+  .chart {
 
-    .header {
+    .title {
       background: mat-color($primary);
       color: mat-color($primary, default-contrast);
     }
@@ -17,7 +17,7 @@
       background-color: mat-color($background, card);
     }
 
-    .action-buttons {
+    .last-update {
       @if $is-dark-theme {
         background: #2b2b2b;
         color: #fff;

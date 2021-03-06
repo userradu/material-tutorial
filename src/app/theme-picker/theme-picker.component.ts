@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChartOptions } from 'chart.js';
+import { ThemeService } from 'ng2-charts';
 import { StyleManagerService } from './style-manager.service';
 import { SiteTheme, ThemeStorageService } from './theme-storage.service';
 
@@ -25,6 +27,7 @@ export class ThemePickerComponent implements OnInit  {
   constructor(
     public styleManagerService: StyleManagerService,
     private themeStorageService: ThemeStorageService,
+    private chartsThemeService: ThemeService
   ) { }
 
   ngOnInit() {
@@ -54,13 +57,36 @@ export class ThemePickerComponent implements OnInit  {
       this.styleManagerService.setStyle('theme', `assets/${theme.name}.css`);
     }
 
-    if (this.currentTheme) {
-      this.themeStorageService.storeTheme(this.currentTheme);
-    }
+    this.themeStorageService.storeTheme(this.currentTheme);
+    this.updateChartsTheme(this.currentTheme.name);
   }
 
   onThemeSelectorChange() {
     this.isDarkModeEnabled = !this.isDarkModeEnabled;
     this.installTheme(this.isDarkModeEnabled ? 'dark-theme' : 'light-theme');
+  }
+
+  updateChartsTheme(theme: string) {
+    let overrides: ChartOptions;
+    if (theme === 'dark-theme') {
+      overrides = {
+        legend: {
+          labels: { fontColor: 'white' }
+        },
+        scales: {
+          xAxes: [{
+            ticks: { fontColor: 'white' },
+            gridLines: { color: 'rgba(255,255,255,0.1)' }
+          }],
+          yAxes: [{
+            ticks: { fontColor: 'white' },
+            gridLines: { color: 'rgba(255,255,255,0.1)' }
+          }]
+        }
+      };
+    } else {
+      overrides = {};
+    }
+    this.chartsThemeService.setColorschemesOptions(overrides);
   }
 }
