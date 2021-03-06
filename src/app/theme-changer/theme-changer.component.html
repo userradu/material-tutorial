@@ -1,33 +1,63 @@
 <div class="wrapper">
-  <div class="colors">
-    <div>
-      <h3>Primary Color</h3>
-      <input
-        [(colorPicker)]="primaryColor"
-        [style.background]="primaryColor"
-        [cpOKButton]="true"
-        [cpCancelButton]="true"
-        (colorPickerSelect)="setColor($event, 'primary')"/>
-    </div>
+  <div class="settings">
+    <label>Apply color for</label>
+    <mat-button-toggle-group [formControl]="currentTheme">
+      <mat-button-toggle value="dark-theme">Dark Theme</mat-button-toggle>
+      <mat-button-toggle value="light-theme">Light Theme</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
 
-    <div>
-      <h3>Secondary Color</h3>
-      <input
-        [(colorPicker)]="secondaryColor"
-        [style.background]="secondaryColor"
-        [cpOKButton]="true"
-        [cpCancelButton]="true"
-        (colorPickerSelect)="setColor($event, 'secondary')"/>
-    </div>
+  <div class="color-pickers-wrapper">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Primary Color</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <input
+          [(colorPicker)]="primaryColor"
+          [cpPositionOffset]="'100%'"
+          [cpHeight]="'280px'"
+          [cpToggle]="true"
+          [cpAlphaChannel]="'disabled'"
+          [cpDialogDisplay]="'inline'"
+          (colorPickerChange)="setColor($event, 'primary')"/>
+      </mat-card-content>
+    </mat-card>
 
-    <div>
-      <h3>Warn Color</h3>
-      <input
-        [(colorPicker)]="warnColor"
-        [style.background]="warnColor"
-        [cpOKButton]="true"
-        [cpCancelButton]="true"
-        (colorPickerSelect)="setColor($event, 'warn')"/>
-    </div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Accent Color</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <input
+          [(colorPicker)]="secondaryColor"
+          [cpPositionOffset]="'100%'"
+          [cpHeight]="'280px'"
+          [cpToggle]="true"
+          [cpAlphaChannel]="'disabled'"
+          [cpDialogDisplay]="'inline'"
+          (colorPickerChange)="setColor($event, 'secondary')"/>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Warning Color</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <input
+          [(colorPicker)]="warnColor"
+          [cpPositionOffset]="'100%'"
+          [cpHeight]="'280px'"
+          [cpToggle]="true"
+          [cpAlphaChannel]="'disabled'"
+          [cpDialogDisplay]="'inline'"
+          (colorPickerChange)="setColor($event, 'warn')"/>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div>
+    <app-form></app-form>
   </div>
 </div>

@@ -13,10 +13,6 @@ export interface ColorConfig {
 })
 export class ThemingService {
 
-  defaultPrimary = '#a500ff';
-  defaultSecondary = '#00ff32';
-  defaultWarn = '#ff0000';
-
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
   generateColorPalette(hexColor: string): ColorConfig[] {
@@ -59,17 +55,11 @@ export class ThemingService {
     };
   }
 
-  setDefaultTheme() {
-    this.setColor(this.defaultPrimary, 'primary');
-    this.setColor(this.defaultSecondary, 'secondary');
-    this.setColor(this.defaultWarn, 'warn');
-  }
-
-  setColor(color: string, colorType: 'primary' | 'secondary' | 'warn') {
+  setColor(color: string, colorType: 'primary' | 'secondary' | 'warn', theme: 'light-theme' | 'dark-theme') {
     const prefix = {
-      primary: '--theme-primary-color',
-      secondary: '--theme-accent-color',
-      warn: '--theme-warn-color'
+      primary: `--${theme}-primary-color`,
+      secondary: `--${theme}-accent-color`,
+      warn: `--${theme}-warn-color`
     };
 
     const colorPalette = this.generateColorPalette(color);
@@ -79,9 +69,11 @@ export class ThemingService {
 
       const colorVariableName = `${prefix[colorType]}-${colorVariant}`;
       this.setColorVariable(colorVariableName, colorHexValue);
+      console.log(`${colorVariableName}: #${colorHexValue}`);
 
       const contrastedColorVariableName = `${prefix[colorType]}-contrast-${colorVariant}`;
       const contrastedColorValue = shouldHaveDarkContrast ? '#000' : '#fff';
+      console.log(`${contrastedColorVariableName}: #${contrastedColorValue}`);
       this.setColorVariable(contrastedColorVariableName, contrastedColorValue);
     }
   }

@@ -1,4 +1,30 @@
 .wrapper {
   padding: 15px;
-  min-height: 500px;
+
+  .settings {
+    margin-bottom: 25px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+
+  .color-pickers-wrapper {
+    display: flex;
+    margin-bottom: 25px;
+
+    .mat-card {
+      width: 235px;
+      margin-right: 25px;
+
+      .mat-card-header-text {
+        margin: 0;
+      }
+    }
+
+    .color-picker {
+      top: -22px;
+    }
+  }
 }
