@@ -15,11 +15,7 @@
       Link 3
     </button>
 
-    <mat-slide-toggle
-      [checked]="darkThemeEnabled"
-      (change)="switchTheme($event.checked)">
-      Dark Theme
-    </mat-slide-toggle>
+    <app-theme-picker></app-theme-picker>
   </mat-toolbar-row>
 </mat-toolbar>
 

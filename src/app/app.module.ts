@@ -25,6 +25,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CardsComponent } from './cards/cards.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TextComponent } from './text/text.component';
@@ -35,6 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { IconsComponent } from './icons/icons.component';
 import { ThemeChangerComponent } from './theme-changer/theme-changer.component';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     DialogComponent,
     ExampleDialogComponent,
     IconsComponent,
-    ThemeChangerComponent
+    ThemeChangerComponent,
+    ThemePickerComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatDialogModule,
-    ColorPickerModule
+    ColorPickerModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
