@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { StyleManagerService } from './style-manager.service';
-import { DocsSiteTheme, ThemeStorageService } from './theme-storage.service';
+import { SiteTheme, ThemeStorageService } from './theme-storage.service';
 
 @Component({
   selector: 'app-theme-picker',
@@ -9,21 +9,14 @@ import { DocsSiteTheme, ThemeStorageService } from './theme-storage.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ThemePickerComponent  {
-  currentTheme!: DocsSiteTheme;
+  currentTheme!: SiteTheme;
 
-  themes: DocsSiteTheme[] = [
+  themes: SiteTheme[] = [
     {
-      primary: '#673AB7',
-      accent: '#FFC107',
-      displayName: 'Light Theme',
       name: 'light-theme',
-      isDark: false,
       isDefault: true
     },
     {
-      primary: '#3F51B5',
-      accent: '#E91E63',
-      displayName: 'Dark Theme',
       name: 'dark-theme',
       isDark: true,
     }
@@ -31,16 +24,16 @@ export class ThemePickerComponent  {
 
   constructor
   (
-    public styleManager: StyleManagerService,
-    private _themeStorage: ThemeStorageService,
+    public styleManagerService: StyleManagerService,
+    private themeStorageService: ThemeStorageService,
   ) {
-    const themeName = this._themeStorage.getStoredThemeName();
+    const themeName = this.themeStorageService.getStoredThemeName();
     if (themeName) {
-      this.selectTheme(themeName);
+      this.installTheme(themeName);
     }
   }
 
-  selectTheme(themeName: string) {
+  installTheme(themeName: string) {
     const theme = this.themes.find(currentTheme => currentTheme.name === themeName);
 
     if (!theme) {
@@ -50,13 +43,13 @@ export class ThemePickerComponent  {
     this.currentTheme = theme;
 
     if (theme.isDefault) {
-      this.styleManager.removeStyle('theme');
+      this.styleManagerService.removeStyle('theme');
     } else {
-      this.styleManager.setStyle('theme', `assets/${theme.name}.css`);
+      this.styleManagerService.setStyle('theme', `assets/${theme.name}.css`);
     }
 
     if (this.currentTheme) {
-      this._themeStorage.storeTheme(this.currentTheme);
+      this.themeStorageService.storeTheme(this.currentTheme);
     }
   }
 }

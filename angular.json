@@ -37,11 +37,6 @@
                 "inject": false,
                 "input": "src/themes/dark-theme/dark-theme.scss",
                 "bundleName": "assets/dark-theme"
-              },
-              {
-                "inject": false,
-                "input": "src/themes/light-theme/light-theme.scss",
-                "bundleName": "assets/light-theme"
               }
             ],
             "scripts": []

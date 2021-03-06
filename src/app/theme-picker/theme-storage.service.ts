@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 
-export interface DocsSiteTheme {
+export interface SiteTheme {
   name: string;
-  displayName?: string;
-  accent: string;
-  primary: string;
   isDark?: boolean;
   isDefault?: boolean;
 }
@@ -13,9 +10,9 @@ export interface DocsSiteTheme {
   providedIn: 'root',
  })
 export class ThemeStorageService {
-  static storageKey = 'docs-theme-storage-current-name';
+  static storageKey = 'material-tutorial-theme-storage-current-name';
 
-  storeTheme(theme: DocsSiteTheme) {
+  storeTheme(theme: SiteTheme) {
     try {
       window.localStorage[ThemeStorageService.storageKey] = theme.name;
     } catch { }
