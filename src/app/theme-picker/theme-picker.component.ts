@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { StyleManagerService } from './style-manager.service';
 import { SiteTheme, ThemeStorageService } from './theme-storage.service';
 
@@ -8,8 +8,9 @@ import { SiteTheme, ThemeStorageService } from './theme-storage.service';
   styleUrls: ['./theme-picker.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ThemePickerComponent  {
+export class ThemePickerComponent implements OnInit  {
   currentTheme!: SiteTheme;
+  isDarkModeEnabled = false;
 
   themes: SiteTheme[] = [
     {
@@ -17,19 +18,24 @@ export class ThemePickerComponent  {
       isDefault: true
     },
     {
-      name: 'dark-theme',
-      isDark: true,
+      name: 'dark-theme'
     }
   ];
 
-  constructor
-  (
+  constructor(
     public styleManagerService: StyleManagerService,
     private themeStorageService: ThemeStorageService,
-  ) {
+  ) { }
+
+  ngOnInit() {
     const themeName = this.themeStorageService.getStoredThemeName();
     if (themeName) {
       this.installTheme(themeName);
+      if (themeName === 'light-theme') {
+        this.isDarkModeEnabled = false;
+      } else {
+        this.isDarkModeEnabled = true;
+      }
     }
   }
 
@@ -51,5 +57,10 @@ export class ThemePickerComponent  {
     if (this.currentTheme) {
       this.themeStorageService.storeTheme(this.currentTheme);
     }
+  }
+
+  onThemeSelectorChange() {
+    this.isDarkModeEnabled = !this.isDarkModeEnabled;
+    this.installTheme(this.isDarkModeEnabled ? 'dark-theme' : 'light-theme');
   }
 }

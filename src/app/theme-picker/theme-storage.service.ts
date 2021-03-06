@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 export interface SiteTheme {
   name: string;
-  isDark?: boolean;
   isDefault?: boolean;
 }
 
