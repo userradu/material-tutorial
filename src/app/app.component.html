@@ -16,6 +16,17 @@
     </button>
 
     <app-theme-picker></app-theme-picker>
+
+    <mat-form-field class="font">
+      <mat-select [formControl]="font">
+        <mat-option [value]="'Montserrat'">
+          Montserrat
+        </mat-option>
+        <mat-option [value]="'DancingScript'">
+          DancingScript
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </mat-toolbar-row>
 </mat-toolbar>
 

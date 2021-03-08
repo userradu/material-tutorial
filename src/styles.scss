@@ -9,5 +9,16 @@
   font-weight: bold;
 }
 
+@font-face {
+  font-family: DancingScript;
+  src: url(assets/fonts/Dancing_Script/DancingScript-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: DancingScript;
+  src: url(assets/fonts/Dancing_Script/DancingScript-Bold.ttf) format("truetype");
+  font-weight: bold;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Montserrat; }

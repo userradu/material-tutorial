@@ -39,6 +39,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { ChartsModule } from 'ng2-charts';
 import { ChartComponent } from './chart/chart.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { ChartComponent } from './chart/chart.component';
     MatDialogModule,
     ColorPickerModule,
     MatMenuModule,
-    ChartsModule
+    ChartsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

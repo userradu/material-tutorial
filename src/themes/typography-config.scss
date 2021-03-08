@@ -1,3 +1,7 @@
+:root {
+  --font-family: 'Montserrat';
+}
+
 $custom-typography: mat-typography-config(
-  $font-family: 'Montserrat',
+  $font-family: var(--font-family),
 );
