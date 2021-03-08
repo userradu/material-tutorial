@@ -1,10 +1,10 @@
 @import '~@angular/material/theming';
 @import './default-color-values.scss';
 @import './color-palettes.scss';
-
-@include mat-core();
-
+@import '../typography-config.scss';
 @import '../custom-components-theme.scss';
+
+@include mat-core($custom-typography);
 
 $light-theme: mat-light-theme((
   color: (
